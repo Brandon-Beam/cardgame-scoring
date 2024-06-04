@@ -7,8 +7,9 @@ import { ThemedView } from '@/components/ThemedView';
 
 
 export default function HomeScreen() {
-  const [text, onChangeText] = React.useState('Useless Text');
+  
   const [number, onChangeNumber] = React.useState('');
+  const [score, onChangeScore] = React.useState(0);
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -19,10 +20,11 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">he he</ThemedText>
+        <ThemedText type="title">{score}</ThemedText>
         <HelloWave />
         <TextInput
         style={styles.input}
+        onSubmitEditing={()=>onChangeScore((score+Number(number)))}
         onChangeText={onChangeNumber}
         value={number}
         placeholder="useless placeholder"
